@@ -41,10 +41,11 @@ export async function getAssetLedgerInfo() {
     provider,
     config.assetLedgerSource
   );
-  const info = await assetLedger.getInfo().catch(e => {
-    throw e;
-  });
-  return info;
+  // const info = await assetLedger.getInfo().catch(e => {
+  // throw e;
+  // });
+  // return info;
+  return assetLedger.getInfo();
 }
 
 export async function getAssetOwner() {
@@ -53,10 +54,7 @@ export async function getAssetOwner() {
     provider,
     config.assetLedgerSource
   );
-  const owner = await assetLedger.getAssetAccount("100").catch(e => {
-    throw e;
-  });
-  return owner;
+  return assetLedger.getAssetAccount("100");
 }
 
 export async function createNewAsset() {
@@ -65,17 +63,11 @@ export async function createNewAsset() {
     provider,
     config.assetLedgerSource
   );
-  const mutation = await assetLedger
-    .createAsset({
-      receiverId: provider.accountId,
-      imprint:
-        "aa431acea5ded5d83ea45f1caf39da9783775c8c8c65d30795f41ed6eff45e1b",
-      id: "100"
-    })
-    .catch(e => {
-      throw e;
-    });
-  return mutation;
+  return assetLedger.createAsset({
+    receiverId: provider.accountId,
+    imprint: "aa431acea5ded5d83ea45f1caf39da9783775c8c8c65d30795f41ed6eff45e1b",
+    id: "100"
+  });
 }
 
 export async function transferAsset() {
@@ -84,13 +76,8 @@ export async function transferAsset() {
     provider,
     config.assetLedgerSource
   );
-  const mutation = await assetLedger
-    .transferAsset({
-      receiverId: "0xF9196F9f176fd2eF9243E8960817d5FbE63D79aa",
-      id: "100"
-    })
-    .catch(e => {
-      throw e;
-    });
-  return mutation;
+  return assetLedger.transferAsset({
+    receiverId: "0xF9196F9f176fd2eF9243E8960817d5FbE63D79aa",
+    id: "100"
+  });
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@0xcert/ethereum-example-asset-management",
+  "name": "asset-management",
   "version": "0.0.1",
   "description": "",
   "main": "index.html",
