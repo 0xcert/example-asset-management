@@ -10,5 +10,9 @@
   "devDependencies": {
     "parcel-bundler": "^1.6.1"
   },
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "@0xcert/ethereum-asset-ledger": "2.0.0-alpha13",
+    "@0xcert/ethereum-metamask-provider": "2.0.0-alpha13"
+  }
 }
