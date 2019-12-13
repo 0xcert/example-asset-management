@@ -12,11 +12,12 @@ const btnGetAssetLedgerInfo = document.getElementById("btnGetAssetLedgerInfo");
 const btnCreateNewAsset = document.getElementById("btnCreateNewAsset");
 const btnTransferAsset = document.getElementById("btnTransferAsset");
 const btnGetAssetOwner = document.getElementById("btnGetAssetOwner");
-const console = document.getElementById("console");
+const divConsole = document.getElementById("console");
 
 btnDeployAssetLedger.addEventListener("click", async () => {
   printMessage("Starting asset ledger deploy");
   const mutation = await deployAssetLedger().catch(e => {
+    console.log(e);
     printError(e);
   });
   if (mutation) {
@@ -105,7 +106,7 @@ function printError(message: any) {
   const div = document.createElement("div");
   div.innerText = "Error: " + message;
   div.className = "error";
-  console.prepend(div);
+  divConsole.prepend(div);
 }
 
 function printWarning(message: any) {
@@ -115,7 +116,7 @@ function printWarning(message: any) {
   const div = document.createElement("div");
   div.innerText = "Warning: " + message;
   div.className = "warning";
-  console.prepend(div);
+  divConsole.prepend(div);
 }
 
 function printMessage(message: any) {
@@ -124,5 +125,5 @@ function printMessage(message: any) {
   }
   const div = document.createElement("div");
   div.innerText = message;
-  console.prepend(div);
+  divConsole.prepend(div);
 }

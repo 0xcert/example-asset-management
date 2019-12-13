@@ -6,7 +6,7 @@ import {
 } from "@0xcert/ethereum-asset-ledger";
 
 // We create a new instance of metamask provider.
-const provider = new MetamaskProvider();
+const provider = new MetamaskProvider(config.providerConfig);
 
 export async function enableMetamask() {
   // We first check if metamask is already enabled.
@@ -15,7 +15,6 @@ export async function enableMetamask() {
     await provider.enable();
   }
 }
-
 export async function deployAssetLedger() {
   await enableMetamask();
   const mutation = await AssetLedger.deploy(provider, {
@@ -27,6 +26,7 @@ export async function deployAssetLedger() {
       "3f4a0870cd6039e6c987b067b0d28de54efea17449175d7a8cd6ec10ab23cc5d", // base asset schemaId
     capabilities: [AssetLedgerCapability.REVOKE_ASSET]
   }).catch(e => {
+    console.log(e);
     throw e;
   });
   mutation.complete().then(m => {
@@ -41,10 +41,6 @@ export async function getAssetLedgerInfo() {
     provider,
     config.assetLedgerSource
   );
-  // const info = await assetLedger.getInfo().catch(e => {
-  // throw e;
-  // });
-  // return info;
   return assetLedger.getInfo();
 }
 
@@ -77,7 +73,7 @@ export async function transferAsset() {
     config.assetLedgerSource
   );
   return assetLedger.transferAsset({
-    receiverId: "0xF9196F9f176fd2eF9243E8960817d5FbE63D79aa",
+    receiverId: "0xF9196F9f176fd2eF9243E8960817d5FbE63D79aa", // Change with your address otherwise it will be sent to us. :)
     id: "100"
   });
 }
