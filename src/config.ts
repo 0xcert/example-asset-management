@@ -2,6 +2,6 @@
 export const config = {
   assetLedgerSource: "",
   providerConfig: {
-    requiredConfirmations: 0
+    requiredConfirmations: 1
   }
 };

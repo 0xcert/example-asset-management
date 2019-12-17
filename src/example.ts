@@ -15,6 +15,7 @@ export async function enableMetamask() {
     await provider.enable();
   }
 }
+
 export async function deployAssetLedger() {
   await enableMetamask();
   const mutation = await AssetLedger.deploy(provider, {
@@ -26,7 +27,6 @@ export async function deployAssetLedger() {
       "3f4a0870cd6039e6c987b067b0d28de54efea17449175d7a8cd6ec10ab23cc5d", // base asset schemaId
     capabilities: [AssetLedgerCapability.REVOKE_ASSET]
   }).catch(e => {
-    console.log(e);
     throw e;
   });
   mutation.complete().then(m => {
