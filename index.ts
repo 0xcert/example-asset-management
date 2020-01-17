@@ -17,7 +17,6 @@ const divConsole = document.getElementById("console");
 btnDeployAssetLedger.addEventListener("click", async () => {
   printMessage("Starting asset ledger deploy");
   const mutation = await deployAssetLedger().catch(e => {
-    console.log(e);
     printError(e);
   });
   if (mutation) {
