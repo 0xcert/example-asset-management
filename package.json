@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "@0xcert/ethereum-asset-ledger": "2.0.0-beta",
-    "@0xcert/ethereum-metamask-provider": "2.0.0-beta"
+    "@0xcert/ethereum-asset-ledger": "2.0.0-beta5",
+    "@0xcert/ethereum-metamask-provider": "2.0.0-beta5"
   }
 }
